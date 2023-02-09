@@ -12,6 +12,7 @@ node{
 		withCredentials([string(credentialsId: 'docker-pss', variable: 'dockerPass')]) {
     			sh 'docker login -u dungll183 -p dockerPass'
 		sh 'docker push dungll183/docker-tomcat2'
+		}
 	}
 	stage("deploy to tomcat server"){
 		def dockerRun='docker run -it -p 8080:8080 --name my-app -d docker-tomcat2'
@@ -20,3 +21,4 @@ node{
 		}
 	}
 }
+
