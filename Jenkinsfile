@@ -10,7 +10,7 @@ node{
 	}
 	stage("docker push"){
 		withCredentials([string(credentialsId:  'dk-psw', variable: 'dk-ps')]) {
-    			sh 'docker login -u dungll183 -p dk-ps'
+			sh 'docker login -u dungll183 -p ${dk-ps}'
 		sh 'docker push dungll183/docker-tomcat2'
 		}
 	}
