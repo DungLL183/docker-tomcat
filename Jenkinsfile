@@ -9,8 +9,8 @@ node{
 		sh 'docker build -t docker-tomcat2 .'
 	}
 	stage("docker push"){
-		withCredentials([string(credentialsId:  'dk-psw', variable: 'dk-ps')]) {
-			sh 'docker login -u dungll183 -p ${dk-ps}'
+		withCredentials([string(credentialsId:  'docker-creds', variable: 'dockerPassword')]) {
+			sh 'docker login -u dungll183 -p ${dockerPassword}'
 		sh 'docker push dungll183/docker-tomcat2'
 		}
 	}
